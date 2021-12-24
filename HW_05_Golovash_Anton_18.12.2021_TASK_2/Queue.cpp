@@ -27,19 +27,20 @@ inline void Queue<T>::AddToQueue(T item, int priority)
 	}
 	if (!IsQueueEmpty())
 	{
-		int temp_size = _size;
-
-		T* temp = new T[temp_size];// create new teporary array
-		for (int i = 0; i < _size; i++)
+		T* temp = new T[++_size];// create new teporary bigger array
+		for (int i = 0; i < _size - 1; i++)
 			temp[i] = _data[i];// copy array to temporary array
+		temp[_size] = item;// add new element to the end of the new teporary array
 		delete[] _data;
+		_data = temp;
+		temp = nullptr;
 
-		_data = new T[++_size];// create new bigger array
-
-		for (int i = 0; i < temp_size; i++)
-			_data[i] = temp[i];// copy temporary array to new bigger array
-		delete[] temp;
-		_data[_size] = item;// add new element to the end of new bigger array
+		//_data = new T[++temp_size];// create new bigger array
+		//_size = temp_size;
+		//for (int i = 0; i < temp_size; i++)
+		//	_data[i] = temp[i];// copy temporary array to new bigger array
+		//delete[] temp;
+		//_data[_size] = item;// add new element to the end of new bigger array
 	}
 	else
 	{
