@@ -2,22 +2,21 @@
 #include<string>
 #include<sstream>
 #include<iostream>
-
 using namespace std;
-
+template<typename T>
 class Queue
 {
 public:
 	Queue();
 	~Queue();
-	void AddToQueue();
+	void AddToQueue(T item);
 	bool IsQueueEmpty();
 
 private:
-	Queue* _data;
-	int _queueStart;
-	int _queueEnd;
-	int _newElement;
+	T* _data;
+	T* _queueStart;
+	T* _queueEnd;
+	T* _newElement;
 	int _size;
 	int _capacity;
 
