@@ -22,8 +22,9 @@ inline void Queue<T>::AddToQueue(T item, int priority)
 	}
 	if (!IsQueueEmpty())
 	{
-		T* temp_item = new T[++_size];// create new teporary bigger array for T
-		int* temp_priority = new int[++_size];// create new teporary bigger array for _priority
+		_size++;
+		T* temp_item = new T[_size];// create new teporary bigger array for T
+		int* temp_priority = new int[_size];// create new teporary bigger array for _priority
 
 		for (int i = 0; i < _size - 1; i++)
 		{
@@ -49,8 +50,9 @@ inline void Queue<T>::AddToQueue(T item, int priority)
 	}
 	else
 	{
-		_data = new T[++_size];
-		_priority = new int[++_size];
+		_size++;
+		_data = new T[_size];
+		_priority = new int[_size];
 		_data[0] = item;
 		_priority[0] = priority;
 	}
