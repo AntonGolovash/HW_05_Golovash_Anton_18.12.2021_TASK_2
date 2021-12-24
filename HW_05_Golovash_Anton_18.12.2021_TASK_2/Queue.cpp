@@ -3,7 +3,7 @@
 template<typename T>
 inline Queue<T>::Queue() :
 	_data(nullptr), _queueStart(nullptr), _queueEnd(nullptr),
-	_newElement(nullptr), _size(0), _capacity(20), _priority(0)
+	_newElement(nullptr), _size(0), _capacity(1000), _priority(0)
 {
 	cout << "Constructor default:\t" << this << endl;
 }
@@ -30,13 +30,13 @@ inline void Queue<T>::AddToQueue(T item, int priority)
 		int temp_size = _size;
 
 		T* temp = new T[temp_size];// create new teporary array
-		for (int i = 0; i < temp_size; i++)
+		for (int i = 0; i < _size; i++)
 			temp[i] = _data[i];// copy array to temporary array
 		delete[] _data;
 
 		_data = new T[++_size];// create new bigger array
 
-		for (int i = 1; i < _size; i++)
+		for (int i = 0; i < temp_size; i++)
 			_data[i] = temp[i];// copy temporary array to new bigger array
 		delete[] temp;
 		_data[_size] = item;// add new element to the end of new bigger array
