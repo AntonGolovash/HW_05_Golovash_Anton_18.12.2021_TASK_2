@@ -3,6 +3,9 @@
 #include<iostream>
 #include "Queue.h"
 #include "Queue.cpp"
+#include "Printer.h"
+#include "Printer.cpp"
+
 using namespace std;
 
 void main()

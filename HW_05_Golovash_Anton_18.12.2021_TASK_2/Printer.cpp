@@ -1,10 +1,20 @@
 #include "Printer.h"
+#include "Queue.h"
+#include "Queue.cpp"
 
-Printer::Printer()
+template<typename T>
+inline Printer<T>::Printer()
 {
 }
 
-Printer::~Printer()
+template<typename T>
+inline Printer<T>::~Printer()
 {
+}
+
+template<typename T>
+void Printer<T>::Print(T object)
+{
+
 }
 
