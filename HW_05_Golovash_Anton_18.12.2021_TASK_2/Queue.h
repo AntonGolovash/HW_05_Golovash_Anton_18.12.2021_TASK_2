@@ -9,7 +9,7 @@ class Queue
 public:
 	Queue();
 	~Queue();
-	void AddToQueue(T item);
+	void AddToQueue(T item, int priority);
 	bool IsQueueEmpty();
 
 private:
@@ -19,5 +19,6 @@ private:
 	T* _newElement;
 	int _size;
 	int _capacity;
+	int _priority;
 
 };
