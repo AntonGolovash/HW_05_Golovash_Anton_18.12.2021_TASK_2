@@ -1,9 +1,7 @@
 #include "Queue.h"
 
 template<typename T>
-inline Queue<T>::Queue() :
-	_data(nullptr), _queueStart(nullptr), _queueEnd(nullptr),
-	_newElement(nullptr), _size(0), _capacity(1000), _priority(0)
+inline Queue<T>::Queue() : _data(nullptr), _size(0), _capacity(100), _priority(0)
 {
 	cout << "Constructor default:\t" << this << endl;
 }
@@ -12,9 +10,6 @@ template<typename T>
 inline Queue<T>::~Queue()
 {
 	delete[] _data;
-	delete _queueStart;
-	delete _queueEnd;
-	delete _newElement;
 }
 
 template<typename T>
@@ -27,25 +22,37 @@ inline void Queue<T>::AddToQueue(T item, int priority)
 	}
 	if (!IsQueueEmpty())
 	{
-		T* temp = new T[++_size];// create new teporary bigger array
-		for (int i = 0; i < _size - 1; i++)
-			temp[i] = _data[i];// copy array to temporary array
-		temp[_size] = item;// add new element to the end of the new teporary array
-		delete[] _data;
-		_data = temp;
-		temp = nullptr;
+		T* temp_item = new T[++_size];// create new teporary bigger array for T
+		int* temp_priority = new int[++_size];// create new teporary bigger array for _priority
 
-		//_data = new T[++temp_size];// create new bigger array
-		//_size = temp_size;
-		//for (int i = 0; i < temp_size; i++)
-		//	_data[i] = temp[i];// copy temporary array to new bigger array
-		//delete[] temp;
-		//_data[_size] = item;// add new element to the end of new bigger array
+		for (int i = 0; i < _size - 1; i++)
+		{
+			temp_item[i] = _data[i];// copy array T to temporary array T
+			temp_priority[i] = _priority[i];// copy array _priority to temporary array _priority
+		}
+		delete[] _data;
+		delete[] _priority;
+
+		temp_item[_size - 1] = item;// add new element to the end of the new teporary array
+		temp_priority[_size - 1] = priority;// add new element to the end of the new teporary array
+
+		_data = new T[_size];// create new bigger T array
+		_priority = new int[_size];// create new bigger _priority array
+
+		for (int i = 0; i < _size; i++)
+		{
+			_data[i] = temp_item[i];// copy temporary array to new bigger T array
+			_priority[i] = temp_priority[i];// copy temporary array to new bigger _priority array
+		}
+		delete[] temp_item;
+		delete[] temp_priority;
 	}
 	else
 	{
 		_data = new T[++_size];
+		_priority = new int[++_size];
 		_data[0] = item;
+		_priority[0] = priority;
 	}
 
 }

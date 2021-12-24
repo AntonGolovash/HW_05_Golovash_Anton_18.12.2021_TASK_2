@@ -14,11 +14,7 @@ public:
 
 private:
 	T* _data;
-	T* _queueStart;
-	T* _queueEnd;
-	T* _newElement;
 	int _size;
 	int _capacity;
-	int _priority;
-
+	int* _priority;
 };

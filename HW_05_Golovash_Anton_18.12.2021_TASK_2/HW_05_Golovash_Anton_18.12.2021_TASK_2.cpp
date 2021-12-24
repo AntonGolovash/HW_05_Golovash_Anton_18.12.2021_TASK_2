@@ -5,7 +5,7 @@
 #include "Queue.cpp"
 using namespace std;
 
-int main()
+void main()
 {
 	Queue<string> queue1;
 	queue1.AddToQueue("string1", 9);
@@ -15,6 +15,5 @@ int main()
 	queue1.AddToQueue("string5", 7);
 	queue1.AddToQueue("string6", 3);
 
-	queue1.~Queue();
-	return 0;
+	system("pause");
 };
