@@ -12,10 +12,11 @@ public:
 	~Queue();
 	void AddToQueue(T item, int priority);
 	bool IsQueueEmpty();
-
-private:
+	int sizeOfQueue();
+protected:
 	T* _data;
 	int _size;
 	int _capacity;
 	int* _priority;
+	int _sizeOfQueue;
 };

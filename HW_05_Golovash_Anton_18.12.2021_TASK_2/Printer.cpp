@@ -3,18 +3,20 @@
 #include "Queue.cpp"
 
 template<typename T>
-inline Printer<T>::Printer()
+inline Printer<T>::Printer(T object)
 {
+
 }
 
 template<typename T>
 inline Printer<T>::~Printer()
 {
+
 }
 
 template<typename T>
 void Printer<T>::Print(T object)
 {
-
+	
 }
 

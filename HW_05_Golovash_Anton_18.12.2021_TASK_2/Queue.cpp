@@ -66,3 +66,13 @@ inline bool Queue<T>::IsQueueEmpty()
 		return true;
 	return false;
 }
+
+template<typename T>
+int Queue<T>::sizeOfQueue()
+{
+	for (size_t i = 0; i < _size; i++)
+	{
+		_sizeOfQueue += sizeof(_data[i]);
+	}
+	return _sizeOfQueue;
+}

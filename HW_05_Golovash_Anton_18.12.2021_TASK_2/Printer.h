@@ -2,19 +2,17 @@
 #include<string>
 #include<sstream>
 #include<iostream>
+#include "Queue.h"
+
 using namespace std;
 
 template<typename T>
-class Printer
+class Printer : public virtual Queue<T>
 {
 public:
-	Printer();
+	Printer(T object);
 	~Printer();
 	void Print(T object);
 private:
-	T* _data;
-	int _size;
-	int _capacity;
-	int* _priority;
 
 };
