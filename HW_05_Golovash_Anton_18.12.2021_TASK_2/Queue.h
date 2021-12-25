@@ -13,6 +13,7 @@ public:
 	void AddToQueue(T item, int priority);
 	bool IsQueueEmpty();
 	int sizeOfQueue();
+	int getSize();
 protected:
 	T* _data;
 	int _size;

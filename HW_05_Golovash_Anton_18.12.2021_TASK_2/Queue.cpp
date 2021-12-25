@@ -1,19 +1,19 @@
 #include "Queue.h"
 
 template<typename T>
-inline Queue<T>::Queue() : _data(nullptr), _size(0), _capacity(100), _priority(0)
+Queue<T>::Queue() : _data(nullptr), _size(0), _capacity(100), _priority(0), _sizeOfQueue(0)
 {
 	cout << "Constructor default:\t" << this << endl;
 }
 
 template<typename T>
-inline Queue<T>::~Queue()
+Queue<T>::~Queue()
 {
 	delete[] _data;
 }
 
 template<typename T>
-inline void Queue<T>::AddToQueue(T item, int priority)
+void Queue<T>::AddToQueue(T item, int priority)
 {
 	if (_capacity <= _size)
 	{
@@ -60,7 +60,7 @@ inline void Queue<T>::AddToQueue(T item, int priority)
 }
 
 template<typename T>
-inline bool Queue<T>::IsQueueEmpty()
+bool Queue<T>::IsQueueEmpty()
 {
 	if (_data == nullptr)
 		return true;
@@ -70,9 +70,16 @@ inline bool Queue<T>::IsQueueEmpty()
 template<typename T>
 int Queue<T>::sizeOfQueue()
 {
+	_sizeOfQueue = 0;
 	for (size_t i = 0; i < _size; i++)
 	{
 		_sizeOfQueue += sizeof(_data[i]);
 	}
 	return _sizeOfQueue;
+}
+
+template<typename T>
+int Queue<T>::getSize()
+{
+	return this->_size;
 }
